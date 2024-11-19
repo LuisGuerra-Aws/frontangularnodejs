@@ -1,0 +1,21 @@
+@if (viewMode){
+<div class="row">
+    <div class="edit-form col-md-6">
+        <h3> {{ rol.id_rol ? 'Editar Rol' : 'Insertar Rol' }} </h3>
+        <form>
+            
+            <div class="form-group">
+              <label for="name">Nombre</label>
+              <input type="text" class="form-control" id="name" [(ngModel)]="rol.rol_name" name="name" autocomplete="off" placeholder="Ingrese Nombre" />
+            </div>
+            <div class="form-group">
+              <label for="description">Descripción </label>
+              <input type="text" class="form-control" id="description" [(ngModel)]="rol.rol_description" name="description" placeholder="Password">
+            </div>
+            <button (click)="saveRol()" class="btn btn-success">Submit</button>
+          </form>        
+
+    </div>
+
+</div>
+}

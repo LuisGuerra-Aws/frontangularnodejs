@@ -1,0 +1,48 @@
+<div class="list row">
+    <div class="col-md-6">
+        <h3>Lista de Roles</h3>
+        <ul class="list-group">
+            @for (rol of roles; track rol.id_rol; let i = $index) {
+                <li
+                    class="list-group-item"
+                    [class.active]="i == currentIndex"
+                        (click)="setSelected(rol, i)">
+                        {{ rol.rol_name }}
+                </li>
+            }
+        </ul>
+
+        @if (!roles  || roles.length == 0) {
+        <div>
+            Lista de Roles está vacía <a href="/Rolform">Adicionar Nuevo Rol</a>
+        </div>
+        }
+
+        @if (roles && roles.length > 0) {
+        <a class="btn btn-link" routerLink="/Rolform"  >Adicionar Nuevo Rol </a>
+        }
+    </div>
+
+<div class="col-md-6">
+    @if(selected) {
+        <div  >
+            <h3>Detalles de un Rol</h3>
+            <div>
+                    <Label><strong> Id:</strong></Label> {{ selected.id_rol! }}
+            </div>
+            <div>
+                    <Label><strong> Nombre:</strong></Label> {{ selected.rol_name! }}
+            </div>
+            <div>
+                    <Label><strong>Descripción:</strong></Label> {{ selected.rol_description! }}
+            </div>
+    
+            <a class="btn btn-sm btn-secondary mr-2" routerLink="/Rolform/{{ selected.id_rol }}">Editar </a>
+            <a class="btn btn-sm btn-danger mr-2" (click)="deleteRol()">Eliminar</a>
+        </div>
+    }
+    
+        <p>{{ message }}</p>
+
+</div>
+</div>
